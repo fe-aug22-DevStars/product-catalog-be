@@ -6,3 +6,12 @@ export const getAll = async (req: Request, res: Response) => {
 
   res.send(products);
 }
+
+export const getPaginated = async (req: Request, res: Response) => {
+  const { pageId } = req.params;
+  const { amount } = req.params;
+
+  const products = await productsService.getPaginated(+pageId, +amount);
+
+  res.send(products);
+}

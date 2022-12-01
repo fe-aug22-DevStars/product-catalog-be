@@ -1069,3 +1069,7 @@ const products = [
 export function getAll() {
   return products;
 }
+
+export function getPaginated(pageId: number, amount: number) {
+  return products.filter(product => +product.id > (pageId - 1) * amount && +product.id <= pageId * amount);
+}
