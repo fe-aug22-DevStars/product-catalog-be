@@ -1070,6 +1070,14 @@ export function getAll() {
   return products;
 }
 
-export function getPaginated(pageId: number, amount: number) {
-  return products.filter(product => +product.id > (pageId - 1) * amount && +product.id <= pageId * amount);
+export function getPhones(amount: number, pageId: number) {
+  const lastPhoneIndex = amount * pageId;
+  const firstPhoneIndex = lastPhoneIndex - amount;
+  const currentPhones = products.slice(firstPhoneIndex, lastPhoneIndex);
+
+  return currentPhones
+}
+
+export function getNumberOfPages(amount: number) {
+  return Math.ceil(products.length / amount)
 }
