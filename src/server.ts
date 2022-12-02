@@ -16,7 +16,6 @@ router.get('/', (req, res) => {
     })
 })
 
-app.use('/.netlify/functions/server', router);
 app.use('/.netlify/functions/server/products', productsRouter);
 
 export const handler = serverless(app);
