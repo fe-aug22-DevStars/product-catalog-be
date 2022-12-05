@@ -10,12 +10,15 @@ export const getAll = async (req: Request, res: Response) => {
 export const getPhones = async (req: Request, res: Response) => {
   const { pageId, amount, sortBy } = req.params;
 
+  const allProducts = await productsService.getAll();
+  const totalAmount = allProducts.length;
   const products = await productsService.getPhones(amount, +pageId, sortBy);
   const numberOfPages = await productsService.getNumberOfPages(amount);
 
   res.send({
     "products": products,
     "numberOfPages": numberOfPages,
+    "numberOfProducts": totalAmount,
   })
 }
 
