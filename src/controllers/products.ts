@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-shadow
 import { Request, Response } from 'express';
 import * as productsService from '../services/products';
 
@@ -7,7 +8,7 @@ export const getAll = async(req: Request, res: Response) => {
   res.send(products);
 };
 
-export const getPhones = async (req: Request, res: Response) => {
+export const getPhones = async(req: Request, res: Response) => {
   const { pageId, amount, sortBy } = req.params;
 
   const allProducts = await productsService.getAll();
@@ -26,6 +27,14 @@ export const getFavourites = async(req: Request, res: Response) => {
   const { phoneIds } = req.params;
 
   const products = await productsService.getFavourites(phoneIds);
+
+  res.send(products);
+};
+
+export const getItemFromCart = async(req: Request, res: Response) => {
+  const { phoneIds } = req.params;
+
+  const products = await productsService.getItemFromCart(phoneIds);
 
   res.send(products);
 };
