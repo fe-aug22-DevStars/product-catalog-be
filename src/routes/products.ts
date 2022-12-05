@@ -5,3 +5,4 @@ export const router = express.Router();
 
 router.get('/', productsController.getAll);
 router.get('/:amount/:pageId', productsController.getPhones);
+router.get('/:phoneIds', productsController.getFavourites);

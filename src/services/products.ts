@@ -1081,3 +1081,7 @@ export function getPhones(amount: number, pageId: number) {
 export function getNumberOfPages(amount: number) {
   return Math.ceil(products.length / amount)
 }
+
+export function getFavourites(phoneIds: string) {
+  return products.filter(product => phoneIds.split('&').includes(product.id))
+}

@@ -18,3 +18,11 @@ export const getPhones = async (req: Request, res: Response) => {
     "numberOfPages": numberOfPages,
   })
 }
+
+export const getFavourites = async(req: Request, res: Response) => {
+  const { phoneIds } = req.params;
+
+  const products = await productsService.getFavourites(phoneIds);
+
+  res.send(products);
+}
