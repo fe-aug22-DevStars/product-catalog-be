@@ -7,11 +7,11 @@ export const getAll = async(req: Request, res: Response) => {
   res.send(products);
 };
 
-export const getPhones = async(req: Request, res: Response) => {
-  const { pageId, amount } = req.params;
+export const getPhones = async (req: Request, res: Response) => {
+  const { pageId, amount, sortBy } = req.params;
 
-  const products = await productsService.getPhones(+amount, +pageId);
-  const numberOfPages = await productsService.getNumberOfPages(+amount);
+  const products = await productsService.getPhones(amount, +pageId, sortBy);
+  const numberOfPages = await productsService.getNumberOfPages(amount);
 
   res.send({
     'products': products,
