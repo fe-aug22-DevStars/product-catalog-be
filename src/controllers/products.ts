@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import * as productsService from '../services/products';
 
-export const getAll = async (req: Request, res: Response) => {
+export const getAll = async(req: Request, res: Response) => {
   const products = await productsService.getAll();
 
   res.send(products);
-}
+};
 
 export const getPhones = async (req: Request, res: Response) => {
   const { pageId, amount, sortBy } = req.params;
@@ -14,10 +14,10 @@ export const getPhones = async (req: Request, res: Response) => {
   const numberOfPages = await productsService.getNumberOfPages(amount);
 
   res.send({
-    "products": products,
-    "numberOfPages": numberOfPages,
-  })
-}
+    'products': products,
+    'numberOfPages': numberOfPages,
+  });
+};
 
 export const getFavourites = async(req: Request, res: Response) => {
   const { phoneIds } = req.params;
@@ -25,4 +25,4 @@ export const getFavourites = async(req: Request, res: Response) => {
   const products = await productsService.getFavourites(phoneIds);
 
   res.send(products);
-}
+};
