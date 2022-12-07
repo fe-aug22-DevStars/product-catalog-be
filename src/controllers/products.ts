@@ -23,18 +23,10 @@ export const getPhones = async(req: Request, res: Response) => {
   });
 };
 
-export const getFavourites = async(req: Request, res: Response) => {
+export const getPhonesByIds = async(req: Request, res: Response) => {
   const { phoneIds } = req.params;
 
-  const products = await productsService.getFavourites(phoneIds);
-
-  res.send(products);
-};
-
-export const getItemFromCart = async(req: Request, res: Response) => {
-  const { phoneIds } = req.params;
-
-  const products = await productsService.getItemFromCart(phoneIds);
+  const products = await productsService.getPhonesByIds(phoneIds);
 
   res.send(products);
 };

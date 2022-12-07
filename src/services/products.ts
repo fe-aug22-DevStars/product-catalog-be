@@ -57,10 +57,15 @@ export async function getNumberOfPages(amount: string) {
   return 0;
 }
 
-export function getFavourites(phoneIds: string) {
-  return products.filter(product => phoneIds.split('&').includes(product.id));
-}
+export async function getPhonesByIds(phoneIds: string) {
+  const phoneIdsArray = phoneIds.split('&');
+  const favouritePhones = await Phone.findAll(
+    {
+      where: {
+        'id': [phoneIdsArray],
+      },
+    },
+  );
 
-export function getItemFromCart(phoneIds: string) {
-  return products.filter(product => phoneIds.split('&').includes(product.id));
+  return favouritePhones;
 }
