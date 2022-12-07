@@ -1,4 +1,4 @@
-import { Phone } from '../models/Phones';
+import { Phone } from '../models/phone';
 
 export async function getAll() {
   return Phone.findAll();
@@ -6,20 +6,35 @@ export async function getAll() {
 
 export async function getPhones(
   amount: string, pageId: number, sortBy: string,
-) {
-  const allPhones = (await getAll()).sort((product1, product2) => {
-    switch (sortBy) {
-    case 'Alphabetically':
-      return product1.name.localeCompare(product2.name);
+): Promise<Phone[]> {
+  let allPhones: Phone[];
 
-    case 'Cheapest':
-      return product1.price - product2.price;
+  switch (sortBy) {
+  case 'Alphabetically':
+    allPhones = await Phone.findAll(
+      {
+        order: ['name'],
+      },
+    );
+    break;
 
-    default:
-    case 'Newest':
-      return product2.year - product1.year;
-    }
-  });
+  case 'Cheapest':
+    allPhones = await Phone.findAll(
+      {
+        order: ['price'],
+      },
+    );
+    break;
+
+  default:
+  case 'Newest':
+    allPhones = await Phone.findAll(
+      {
+        order: ['year'],
+      },
+    );
+    break;
+  }
 
   if (amount === 'All') {
     return allPhones;
@@ -32,9 +47,9 @@ export async function getPhones(
   return currentPhones;
 }
 
-export function getNumberOfPages(amount: string) {
+export async function getNumberOfPages(amount: string) {
   if (amount !== 'All') {
-    return Math.ceil(products.length / +amount);
+    return Math.ceil(Phone.findAll.length / +amount);
   }
 
   return 0;
