@@ -49,7 +49,9 @@ export async function getPhones(
 
 export async function getNumberOfPages(amount: string) {
   if (amount !== 'All') {
-    return Math.ceil(Phone.findAll.length / +amount);
+    const AllPhones = await Phone.findAll();
+
+    return Math.ceil(AllPhones.length / +amount);
   }
 
   return 0;

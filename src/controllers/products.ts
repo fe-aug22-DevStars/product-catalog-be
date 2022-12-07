@@ -17,11 +17,11 @@ export const getPhones = async(req: Request, res: Response) => {
   const numberOfPages = await productsService.getNumberOfPages(amount);
 
   res.send({
-    "products": products,
-    "numberOfPages": numberOfPages,
-    "numberOfProducts": totalAmount,
-  })
-}
+    'products': products,
+    'numberOfPages': numberOfPages,
+    'numberOfProducts': totalAmount,
+  });
+};
 
 export const getFavourites = async(req: Request, res: Response) => {
   const { phoneIds } = req.params;
