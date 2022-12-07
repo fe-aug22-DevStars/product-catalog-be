@@ -58,3 +58,7 @@ export async function getNumberOfPages(amount: string) {
 export function getFavourites(phoneIds: string) {
   return products.filter(product => phoneIds.split('&').includes(product.id));
 }
+
+export function getItemFromCart(phoneIds: string) {
+  return products.filter(product => phoneIds.split('&').includes(product.id));
+}

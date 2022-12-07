@@ -6,3 +6,4 @@ export const router = express.Router();
 router.get('/', productsController.getAll);
 router.get('/:amount/:pageId/:sortBy', productsController.getPhones);
 router.get('/:phoneIds', productsController.getFavourites);
+router.get('/:phoneIds', productsController.getItemFromCart);
