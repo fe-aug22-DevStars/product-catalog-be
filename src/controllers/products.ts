@@ -27,7 +27,7 @@ export const getPhones = async(req: Request, res: Response) => {
   const products = await productsService.getPhones(amount, +pageId, sortBy);
   const numberOfPages = await productsService.getNumberOfPages(amount);
 
-  if (!allProducts || !products || !numberOfPages) {
+  if (!allProducts || !products) {
     res.sendStatus(400);
 
     return;
