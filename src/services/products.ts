@@ -58,7 +58,7 @@ export async function getNumberOfPages(amount: string) {
 }
 
 export async function getPhonesByIds(phoneIds: string) {
-  const phoneIdsArray = phoneIds.split('&');
+  const phoneIdsArray = JSON.parse(phoneIds);
   const favouritePhones = await Phone.findAll(
     {
       where: {
