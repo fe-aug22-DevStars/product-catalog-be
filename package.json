@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/.bin/netlify-lambda serve src",
-    "build": "./node_modules/.bin/netlify-lambda build src",
+    "start": "node ./build/index.js",
+    "build": "npm install && tsc",
     "setup": "ts-node src/setup.ts",
     "ts-check": "tsc --noEmit --lib ES2015 ./src/*.ts",
     "eslint": "eslint --ext .tsx,.ts --fix ./src -c .eslintrc.cjs"
