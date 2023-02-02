@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./build/server.js",
-    "build": "npm install && tsc",
+    "build": "npm ci && tsc",
     "setup": "ts-node src/setup.ts",
     "ts-check": "tsc --noEmit --lib ES2015 ./src/*.ts",
     "eslint": "eslint --ext .tsx,.ts --fix ./src -c .eslintrc.cjs"
