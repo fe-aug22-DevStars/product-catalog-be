@@ -17,8 +17,10 @@ router.get('/', (req, res) => {
   });
 });
 
-app.use('/', productsRouter);
+app.use(express.static('public'));
 
-app.listen(() => {
-  console.log(`started at ${port}`)
-})
+app.use('/products', productsRouter);
+
+app.listen(port, () => {
+  console.log(`Application listening on port ${port}`);
+});
