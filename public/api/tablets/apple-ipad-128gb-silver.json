@@ -1,0 +1,46 @@
+{
+    "id": "apple-ipad-128gb-silver",
+	"namespaceId": "apple-ipad",
+	"name": "Apple iPad 2022 128GB Silver",
+	"capacityAvailable": ["128GB"],
+	"capacity": "128GB",
+	"priceRegular": 930,
+	"priceDiscount": 920,
+	"colorsAvailable": ["silver"],
+	"color": "silver",
+	"images": [
+		"img/tablets/apple-ipad/silver/00.jpg",
+		"img/tablets/apple-ipad/silver/01.jpg",
+		"img/tablets/apple-ipad/silver/02.jpg",
+		"img/tablets/apple-ipad/silver/03.jpg",
+		"img/tablets/apple-ipad/silver/04.jpg"
+	],
+	"description": [
+		{
+			"title": "And then there was IPad",
+			"text": [
+				"The Apple M2 is Apple's next-generation silicon with an 8-core CPU that delivers up to 15% performance improvement",
+				"The Liquid Retina XDR display provides realistic detail with a contrast ratio of 1,000,000:1"
+			]
+		},
+		{
+			"title": "Camera",
+			"text": [
+				"iPad Pro features an ultra-wide-angle camera with a 12-megapixel sensor and a 122-degree field of view, perfect for taking photos and videos for social media posts."
+			]
+		},
+		{
+			"title": "LiDAR",
+			"text": [
+				"A LiDAR scanner measures how long it takes light to reflect off objects, so it can create a depth map of any space you're in."
+			]
+		}
+	],
+	"screen": "10.9' IPS",
+	"resolution": "1334x750",
+	"processor": "Apple M2",
+	"ram": "4GB",
+	"camera": "12 Mp + 7 Mp",
+	"zoom": "Digital, 5x",
+	"cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
+}

@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-shadow
 import { Request, Response } from 'express';
 import * as productsService from '../services/products';
 
@@ -58,4 +57,24 @@ export const getPhonesByIds = async(req: Request, res: Response) => {
   }
 
   res.status(200).send(products);
+};
+
+export const getProductById = async(req: Request, res: Response) => {
+  const { productId } = req.params;
+
+  if (!productId) {
+    res.sendStatus(422);
+
+    return;
+  }
+
+  const product = await productsService.getOneProductById(productId);
+
+  if (!product) {
+    res.sendStatus(400);
+
+    return;
+  }
+
+  res.status(200).send(product);
 };

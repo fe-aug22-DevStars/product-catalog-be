@@ -1,9 +1,10 @@
 'use strict';
-
 import { Sequelize, Model, DataTypes } from 'sequelize';
+import * as dotenv from 'dotenv'
 
-// eslint-disable-next-line max-len
-export const sequelize = new Sequelize('mysql://43i9gys6l8tfydfer359:pscale_pw_UNobpbtq6k3GwuvL3pTr8KIcDJDbGTehHVykTgPMs5F@eu-central.connect.psdb.cloud/devices-database', {
+dotenv.config()
+
+export const sequelize = new Sequelize(process.env.DATABASE_URL!, {
   dialect: 'mysql',
   dialectModule: require('mysql2'),
   dialectOptions: {
@@ -13,7 +14,8 @@ export const sequelize = new Sequelize('mysql://43i9gys6l8tfydfer359:pscale_pw_U
   },
 });
 
-export class Phone extends Model {}
+export class Phone extends Model {
+}
 
 Phone.init({
   id: {

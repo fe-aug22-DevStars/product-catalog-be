@@ -3,6 +3,6 @@ import * as productsController from '../controllers/products';
 
 export const router = express.Router();
 
-router.get('/', productsController.getAll);
-router.get('/:amount/:pageId/:sortBy', productsController.getPhones);
-router.get('/:phoneIds', productsController.getPhonesByIds);
+router.get('/products', productsController.getAll);
+router.get('/products/:productId', productsController.getProductById);
+router.get('/products/:amount/:pageId/:sortBy', productsController.getPhones);

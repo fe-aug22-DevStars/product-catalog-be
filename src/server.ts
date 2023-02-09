@@ -1,11 +1,12 @@
 import express from 'express';
 import cors from 'cors';
-
+import * as dotenv from 'dotenv'
 import { router as productsRouter } from './routes/products';
+dotenv.config();
 
 const router = express.Router();
 
-const port = 5000
+const port = process.env.PORT;
 
 const app = express();
 
@@ -17,8 +18,10 @@ router.get('/', (req, res) => {
   });
 });
 
+app.use(express.static('public'));
+
 app.use('/', productsRouter);
 
-app.listen(() => {
+app.listen(port, () => {
   console.log(`started at ${port}`)
 })

@@ -1,4 +1,6 @@
 import { Phone } from '../models/phone';
+import fs from 'fs/promises';
+import path from 'path';
 
 export async function getAll() {
   return Phone.findAll();
@@ -10,41 +12,42 @@ export async function getPhones(
   let allPhones: Phone[];
 
   switch (sortBy) {
-  case 'Alphabetically':
-    allPhones = await Phone.findAll(
-      {
-        order: ['name'],
-      },
-    );
-    break;
+    case 'Alphabetically':
+      allPhones = await Phone.findAll(
+        {
+          order: ['name'],
+        },
+      );
+      break;
 
-  case 'Cheapest':
-    allPhones = await Phone.findAll(
-      {
-        order: ['price'],
-      },
-    );
-    break;
+    case 'Cheapest':
+      allPhones = await Phone.findAll(
+        {
+          order: ['price'],
+        },
+      );
+      break;
 
-  default:
-  case 'Newest':
-    allPhones = await Phone.findAll(
-      {
-        order: ['year'],
-      },
-    );
-    break;
+    default:
+    case 'Newest':
+      allPhones = await Phone.findAll(
+        {
+          order: [
+            ['year', 'DESC']
+          ],
+        },
+      );
+      break;
   }
 
   if (amount === 'All') {
     return allPhones;
-  };
+  }
 
   const lastPhoneIndex = +amount * pageId;
   const firstPhoneIndex = lastPhoneIndex - +amount;
-  const currentPhones = allPhones.slice(firstPhoneIndex, lastPhoneIndex);
 
-  return currentPhones;
+  return allPhones.slice(firstPhoneIndex, lastPhoneIndex);
 }
 
 export async function getNumberOfPages(amount: string) {
@@ -59,13 +62,24 @@ export async function getNumberOfPages(amount: string) {
 
 export async function getPhonesByIds(phoneIds: string) {
   const phoneIdsArray = JSON.parse(phoneIds);
-  const favouritePhones = await Phone.findAll(
+
+  return await Phone.findAll(
     {
       where: {
         'id': [phoneIdsArray],
       },
     },
   );
+}
 
-  return favouritePhones;
+export async function getOneProductById(productId: string) {
+  try {
+    const data = await fs.readFile(
+      path.resolve('public', 'api', 'phones', `${productId}.json`), 'utf8',
+    );
+
+    return JSON.parse(data);
+  } catch (error) {
+    console.log(error)
+  }
 }
