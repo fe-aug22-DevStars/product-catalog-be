@@ -39,16 +39,16 @@ export const getPhones = async(req: Request, res: Response) => {
   });
 };
 
-export const getPhonesByIds = async(req: Request, res: Response) => {
-  const { phoneIds } = req.params;
+export const getProductsByIds = async(req: Request, res: Response) => {
+  const { productId } = req.params;
 
-  if (!phoneIds) {
+  if (!productId) {
     res.sendStatus(422);
 
     return;
   }
 
-  const products = await productsService.getPhonesByIds(phoneIds);
+  const products = await productsService.getProductsByIds(productId);
 
   if (!products) {
     res.sendStatus(400);

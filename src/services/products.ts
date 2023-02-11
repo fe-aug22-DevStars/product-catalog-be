@@ -60,13 +60,13 @@ export async function getNumberOfPages(amount: string) {
   return 0;
 }
 
-export async function getPhonesByIds(phoneIds: string) {
-  const phoneIdsArray = JSON.parse(phoneIds);
+export async function getProductsByIds(productId: string) {
+  const productIdsArray = JSON.parse(productId);
 
   return await Phone.findAll(
     {
       where: {
-        'id': [phoneIdsArray],
+        'id': [productIdsArray],
       },
     },
   );
