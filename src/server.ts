@@ -1,12 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import * as dotenv from 'dotenv'
 import { router as productsRouter } from './routes/products';
-dotenv.config();
 
 const router = express.Router();
 
-const port = process.env.PORT;
+const port = 5000;
 
 const app = express();
 
